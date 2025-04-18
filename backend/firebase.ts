@@ -1,15 +1,7 @@
-import { initializeApp, cert, App } from "npm:firebase-admin/app";
-import { getDatabase } from "npm:firebase-admin/database";
+import { getFirebaseRTDB } from "npm:@azroberts/easy-firebase-admin";
 
-const serviceAccount = JSON.parse(
-  Deno.env.get("FIREBASE_SERVICE_ACCOUNT") as string,
+const database = getFirebaseRTDB(
+  "https://super-apply-default-rtdb.firebaseio.com",
 );
-
-const firebase: App = initializeApp({
-  credential: cert(serviceAccount),
-  databaseURL: "https://super-apply-default-rtdb.firebaseio.com",
-});
-
-const database = getDatabase(firebase);
 
 export { database };
