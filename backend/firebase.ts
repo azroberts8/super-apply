@@ -26,6 +26,7 @@ interface JobQuery {
 interface User {
   about: string;
   name: string;
+  email: string;
   seeking?: string;
   skills?: string;
   experience: FirebaseArray<Experience>;
