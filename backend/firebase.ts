@@ -14,7 +14,7 @@ interface JobQuery {
   company: string;
   query: string;
   status: "submitted" | "responded";
-  user: "string";
+  user: string;
   companyBio?: string;
   recipient?: string;
   relatedExperience: FirebaseArray<Experience>;
@@ -39,13 +39,13 @@ const database = getFirebaseRTDB(
 const get = <T = any>(path: string): Promise<T> => {
   const ref = database.ref(path);
   return new Promise((resolve, reject) => {
-    ref.once('value', snapshot => {
-      resolve(snapshot.val())
-    })
+    ref.once("value", (snapshot) => {
+      resolve(snapshot.val());
+    });
   });
-}
+};
 
-const firebase = { get }
+const firebase = { get };
 
 export { database, firebase };
 export type { JobQuery, User };
